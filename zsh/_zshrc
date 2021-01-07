@@ -1,0 +1,86 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
+export EDITOR='vim'
+
+# Vim colors with Tmux
+alias tmux="TERM=screen-256color-bce tmux"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git brew rails ruby tmux tmuxinator docker)
+
+source $ZSH/oh-my-zsh.sh
+export EDITOR='vim'
+export DISABLE_AUTO_TITLE=true
+export PATH="$(brew --prefix)/bin:$PATH"
+
+# Disable auto correct
+unsetopt correct_all
+
+# Chruby configuration
+# source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/auto.sh
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Postgres
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
+# Sass watch
+alias sass-it="sass --watch --sourcemap=none scss:css --style compressed"
+
+# Hub alias
+eval "$(hub alias -s)"
+
+# Global Git Related aliases
+alias -g ga='git add'
+alias -g gaa='git add -A'
+alias -g gca='git commit --amend'
+alias -g gs='git status'
+alias -g gss='git status -s'
+alias -g gco='git checkout'
+alias -g gcob='git checkout -b'
+alias -g gd='git diff'
+alias -g gdc='git diff --cached'
+alias -g gm='git merge --no-ff'
+alias -g gic='git issue create'
+alias -g grh='git reset HEAD'
+alias -g gits='git status'   # For Jeremy S.
+
+# Global Rails aliases
+alias -g migrate='bundle exec rake db:migrate db:test:prepare'
+alias rr="bundle exec rake routes"
+
+# Global MISC aliases
+alias -g be='bundle exec'
+alias reload!='. ~/.zshrc'
+alias -g tks='tmux kill-session'
+alias -g mux='tmuxinator'
+alias t="traffic"
+alias -g cs="console --sandbox"
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Elixir
+export PATH="$PATH:/usr/local/Cellar/elixir/1.2.4/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Lazygit
+alias lg="lazygit"
+
+# Adds zsh-syntax-highlighting
+source /Users/jamelljones/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
